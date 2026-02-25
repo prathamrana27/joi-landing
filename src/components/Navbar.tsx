@@ -52,8 +52,14 @@ function Navbar() {
               {link.label}
             </a>
           ))}
-          <a href="#final-cta" className="btn btn-small btn-primary" onClick={closeMenu}>
-            Join Waitlist
+          <a
+            href={siteContent.downloadUrl}
+            className="btn btn-small btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={closeMenu}
+          >
+            Download for Windows
           </a>
         </nav>
       </div>

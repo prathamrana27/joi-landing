@@ -7,6 +7,7 @@ type PricingCardProps = {
 
 function PricingCard({ tier }: PricingCardProps) {
   const shouldReduceMotion = useReducedMotion();
+  const isExternalLink = /^https?:\/\//.test(tier.ctaHref);
 
   return (
     <motion.article
@@ -23,9 +24,14 @@ function PricingCard({ tier }: PricingCardProps) {
           <li key={feature}>{feature}</li>
         ))}
       </ul>
-      <button className="btn btn-outline" type="button">
+      <a
+        className="btn btn-outline"
+        href={tier.ctaHref}
+        target={isExternalLink ? "_blank" : undefined}
+        rel={isExternalLink ? "noopener noreferrer" : undefined}
+      >
         {tier.cta}
-      </button>
+      </a>
     </motion.article>
   );
 }

@@ -867,48 +867,46 @@ ul {
   margin-top: 1.1rem;
 }
 
-.waitlist-form {
+.release-card {
   border-radius: var(--radius-lg);
   border: 1px solid rgba(146, 178, 209, 0.31);
   background: rgba(10, 18, 28, 0.82);
   padding: 1rem;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.7rem;
 }
 
-.waitlist-form h3 {
+.release-card h3 {
   font-size: 1.08rem;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.1rem;
 }
 
-.waitlist-form label {
-  font-size: 0.84rem;
+.release-card p {
   color: #cddbeb;
-  font-weight: 600;
+  font-size: 0.92rem;
 }
 
-.waitlist-form input {
-  width: 100%;
-  background: rgba(13, 24, 35, 0.92);
-  border: 1px solid rgba(136, 166, 194, 0.45);
-  color: #f0f6ff;
-  border-radius: 10px;
-  padding: 0.72rem 0.78rem;
-  font-family: inherit;
+.release-card ul {
+  display: grid;
+  gap: 0.4rem;
+  color: #dbe6f7;
+  font-size: 0.9rem;
 }
 
-.waitlist-form input::placeholder {
-  color: #8fa5c0;
+.release-card ul li {
+  position: relative;
+  padding-left: 0.9rem;
 }
 
-.field-error {
-  font-size: 0.8rem;
-  color: #ff8f8f;
-}
-
-.field-success {
-  font-size: 0.84rem;
-  color: #70ebce;
+.release-card ul li::before {
+  content: "";
+  width: 0.36rem;
+  height: 0.36rem;
+  border-radius: 50%;
+  background: #69e2c5;
+  position: absolute;
+  left: 0;
+  top: 0.52rem;
 }
 
 .site-footer {

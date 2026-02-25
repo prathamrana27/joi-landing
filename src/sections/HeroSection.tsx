@@ -3,6 +3,7 @@ import { siteContent } from "../content/siteContent";
 
 function HeroSection() {
   const shouldReduceMotion = useReducedMotion();
+  const isExternalLink = (href: string) => /^https?:\/\//.test(href);
 
   return (
     <section id="hero" className="hero">
@@ -31,10 +32,28 @@ function HeroSection() {
             </ul>
 
             <div className="hero-cta">
-              <a className="btn btn-primary" href={siteContent.hero.primaryCta.href}>
+              <a
+                className="btn btn-primary"
+                href={siteContent.hero.primaryCta.href}
+                target={isExternalLink(siteContent.hero.primaryCta.href) ? "_blank" : undefined}
+                rel={
+                  isExternalLink(siteContent.hero.primaryCta.href)
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+              >
                 {siteContent.hero.primaryCta.label}
               </a>
-              <a className="btn btn-outline" href={siteContent.hero.secondaryCta.href}>
+              <a
+                className="btn btn-outline"
+                href={siteContent.hero.secondaryCta.href}
+                target={isExternalLink(siteContent.hero.secondaryCta.href) ? "_blank" : undefined}
+                rel={
+                  isExternalLink(siteContent.hero.secondaryCta.href)
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+              >
                 {siteContent.hero.secondaryCta.label}
               </a>
             </div>

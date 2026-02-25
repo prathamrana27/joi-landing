@@ -27,6 +27,7 @@ export type PricingTier = {
   summary: string;
   features: string[];
   cta: string;
+  ctaHref: string;
   featured?: boolean;
 };
 
@@ -35,8 +36,12 @@ export type FAQ = {
   answer: string;
 };
 
+const DOWNLOAD_URL =
+  "https://joi-exe-bucket.s3.ap-south-1.amazonaws.com/JOI-Desktop-1.0.0-x64.exe.exe";
+
 export const siteContent = {
   brand: "JOI",
+  downloadUrl: DOWNLOAD_URL,
   navLinks: [
     { label: "Capabilities", href: "#capabilities" },
     { label: "How It Works", href: "#how-it-works" },
@@ -58,7 +63,7 @@ export const siteContent = {
       "Voice + desktop context awareness",
       "Local RAG knowledge and full auditability",
     ],
-    primaryCta: { label: "Join Waitlist", href: "#final-cta" },
+    primaryCta: { label: "Download for Windows", href: DOWNLOAD_URL },
     secondaryCta: { label: "Book Demo", href: "#final-cta" },
     statTiles: [
       { label: "Median tool-run latency", value: "340ms" },
@@ -207,7 +212,8 @@ export const siteContent = {
         "Local knowledge indexing",
         "Standard audit history",
       ],
-      cta: "Join Waitlist",
+      cta: "Download for Windows",
+      ctaHref: DOWNLOAD_URL,
     },
     {
       name: "Pro",
@@ -220,6 +226,7 @@ export const siteContent = {
         "Extended audit retention",
       ],
       cta: "Book Demo",
+      ctaHref: "#final-cta",
       featured: true,
     },
     {
@@ -233,6 +240,7 @@ export const siteContent = {
         "Dedicated solution engineer",
       ],
       cta: "Talk to Sales",
+      ctaHref: "#final-cta",
     },
   ] as PricingTier[],
   faqs: [
@@ -264,14 +272,14 @@ export const siteContent = {
     {
       question: "Is JOI available for teams today?",
       answer:
-        "JOI is in controlled rollout. Join the waitlist for early access or book a demo for team evaluation.",
+        "Yes. JOI is available now. Download the desktop app or book a demo for team rollout planning.",
     },
   ] as FAQ[],
   finalCta: {
-    title: "Bring governed desktop AI operations to your team.",
+    title: "Deploy JOI on your desktop today.",
     description:
-      "Join the waitlist for early access, or book a live demo to map JOI to your current workflow stack.",
-    primaryCta: { label: "Join Waitlist", href: "#" },
+      "Download JOI now for Windows x64, or book a live demo to map JOI to your workflow stack.",
+    primaryCta: { label: "Download for Windows", href: DOWNLOAD_URL },
     secondaryCta: { label: "Book Demo", href: "#" },
   },
   footerLinks: [
