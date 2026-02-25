@@ -15,7 +15,7 @@ function Navbar() {
   useEffect(() => {
     if (!menuOpen) return;
     const onResize = () => {
-      if (window.innerWidth > 920) setMenuOpen(false);
+      if (window.innerWidth > 1080) setMenuOpen(false);
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
