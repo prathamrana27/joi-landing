@@ -4,12 +4,7 @@ import { siteContent } from "../content/siteContent";
 
 function FAQSection() {
   return (
-    <Section
-      id="faq"
-      eyebrow="FAQ"
-      title="Answers for teams evaluating JOI."
-      className="section-faq"
-    >
+    <Section id="faq" eyebrow="FAQ" title="Questions," titleAccent="answered.">
       <FAQAccordion items={siteContent.faqs} />
     </Section>
   );

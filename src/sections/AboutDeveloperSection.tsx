@@ -7,25 +7,20 @@ const developerLinks = [
 
 function AboutDeveloperSection() {
   return (
-    <Section
-      id="about-developer"
-      eyebrow="About the Developer"
-      title="Pratham Rana"
-      description="Builder-oriented full-stack AI developer focused on desktop + web product experiences backed by Python LLM systems."
-    >
-      <div className="about-minimal-card">
-        <p>
-          Builds end-to-end assistant products across interface, backend services, and deployment workflows.
-        </p>
-        <div className="about-minimal-links">
+    <Section id="about-developer" eyebrow="Who builds JOI" className="section-tight">
+      <div className="about-card">
+        <div className="about-avatar" aria-hidden="true">
+          PR
+        </div>
+        <div className="about-copy">
+          <h3>Pratham Rana</h3>
+          <p>
+            Full-stack AI developer building JOI end to end, from the desktop app to the AI that runs it.
+          </p>
+        </div>
+        <div className="about-links">
           {developerLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline btn-small"
-            >
+            <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm">
               {link.label}
             </a>
           ))}

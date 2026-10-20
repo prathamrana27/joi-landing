@@ -25,9 +25,7 @@ function FAQAccordion({ items }: FAQAccordionProps) {
                 onClick={() => setActiveIndex(isOpen ? null : index)}
               >
                 <span>{item.question}</span>
-                <span className="faq-icon" aria-hidden="true">
-                  {isOpen ? "-" : "+"}
-                </span>
+                <span className="faq-icon" aria-hidden="true" />
               </button>
             </h3>
             <AnimatePresence initial={false}>
@@ -38,7 +36,7 @@ function FAQAccordion({ items }: FAQAccordionProps) {
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
                   className="faq-panel"
                 >
                   <p>{item.answer}</p>

@@ -3,32 +3,28 @@ export type NavLink = {
   href: string;
 };
 
-export type Capability = {
+export type Feature = {
+  icon: FeatureIcon;
   title: string;
   description: string;
-  tag: string;
+  size?: "wide" | "tall";
 };
+
+export type FeatureIcon =
+  | "mail"
+  | "calendar"
+  | "folder"
+  | "monitor"
+  | "mic"
+  | "repeat"
+  | "plug"
+  | "brain"
+  | "book"
+  | "sun";
 
 export type Step = {
   title: string;
   description: string;
-};
-
-export type Testimonial = {
-  quote: string;
-  name: string;
-  role: string;
-  company: string;
-};
-
-export type PricingTier = {
-  name: string;
-  price: string;
-  summary: string;
-  features: string[];
-  cta: string;
-  ctaHref: string;
-  featured?: boolean;
 };
 
 export type FAQ = {
@@ -36,257 +32,241 @@ export type FAQ = {
   answer: string;
 };
 
-const DOWNLOAD_URL =
+export type Plan = {
+  name: string;
+  price: string;
+  note: string;
+  features: string[];
+  cta: string;
+  ctaHref: string;
+  featured?: boolean;
+  disabled?: boolean;
+};
+
+// The installer link can be changed at build time without touching code:
+//   VITE_DOWNLOAD_URL=https://…/JOI-Setup-1.1.0.exe npm run build
+const DEFAULT_DOWNLOAD_URL =
   "https://joi-exe-bucket.s3.ap-south-1.amazonaws.com/JOI-Desktop-1.0.0-x64.exe.exe";
+
+const DOWNLOAD_URL: string = import.meta.env.VITE_DOWNLOAD_URL || DEFAULT_DOWNLOAD_URL;
 
 export const siteContent = {
   brand: "JOI",
   downloadUrl: DOWNLOAD_URL,
+  downloadMeta: "Windows 10 & 11 · 64-bit · Free during early access",
+
   navLinks: [
-    { label: "Capabilities", href: "#capabilities" },
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "Security", href: "#security-governance" },
-    { label: "Integrations", href: "#integrations-tools" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "Features", href: "#features" },
+    { label: "Privacy", href: "#privacy" },
+    { label: "Safety", href: "#safety" },
+    { label: "How it works", href: "#how-it-works" },
     { label: "FAQ", href: "#faq" },
-    { label: "About Developer", href: "#about-developer" },
   ] as NavLink[],
+
   hero: {
-    badge: "Desktop AI Operator for Builders",
-    headline: "AI desktop operator with control, memory, and automation.",
+    eyebrow: "Your personal AI, on your desktop",
+    headlineStart: "The assistant that",
+    headlineAccent: "actually does",
+    headlineEnd: "things.",
+    rotating: ["Reads your inbox.", "Plans your day.", "Finds your files.", "Runs your computer."],
     subheadline:
-      "JOI executes real workflows across your desktop stack with streaming chat, governed tool actions, and context-aware voice assistance.",
-    positioning:
-      "Generic chatbots can draft text. JOI can run your tools with policy, approvals, and traceability.",
-    highlights: [
-      "Real tool execution with multi-step planning",
-      "Approval workflows for sensitive actions",
-      "Voice + desktop context awareness",
-      "Local RAG knowledge and full auditability",
+      "JOI lives on your computer. Ask in plain words, typed or spoken, and it handles your email, calendar, files and apps, and checks with you before anything important.",
+    secondaryCta: { label: "See what it can do", href: "#features" },
+  },
+
+  marquee: [
+    "Summarise my unread email",
+    "What's on my calendar today?",
+    "Find the invoice from March",
+    "Turn the brightness down",
+    "Draft a reply to Priya",
+    "Send the notes to #team on Slack",
+    "Create a Meet link for 4 pm",
+    "Every morning, brief me at 8",
+    "Take a screenshot",
+    "Add milk to my tasks",
+  ],
+
+  features: [
+    {
+      icon: "mail",
+      title: "Your inbox, handled",
+      description:
+        "JOI reads and summarises your Gmail, drafts replies in your voice, and only sends when you say so.",
+      size: "wide",
+    },
+    {
+      icon: "calendar",
+      title: "Your day, planned",
+      description: "Checks your schedule, books events and keeps your task list in order.",
+    },
+    {
+      icon: "monitor",
+      title: "Your computer, on command",
+      description: "Media, brightness, windows, screenshots, apps: just ask.",
+    },
+    {
+      icon: "repeat",
+      title: "Routines that run themselves",
+      description:
+        "“Every morning, summarise my unread email.” JOI runs it in the background and notifies you with the result.",
+      size: "tall",
+    },
+    {
+      icon: "folder",
+      title: "Files, found",
+      description: "Search, read and organise documents in your JOI workspace.",
+    },
+    {
+      icon: "mic",
+      title: "Just talk",
+      description: "Speak your request and hear the answer back. Hands-free when you need it.",
+    },
+    {
+      icon: "plug",
+      title: "Google Workspace & Slack",
+      description:
+        "Drive, Docs, Sheets, Contacts and Meet, plus reading and sending Slack messages, all on your own accounts.",
+      size: "wide",
+    },
+    {
+      icon: "brain",
+      title: "Remembers what matters",
+      description: "Your preferences and notes, kept and editable any time.",
+    },
+    {
+      icon: "book",
+      title: "Knows your documents",
+      description: "Add your files and ask questions about them in plain language.",
+    },
+    {
+      icon: "sun",
+      title: "A morning briefing",
+      description: "Weather, today's schedule and unread email, ready when you are.",
+    },
+  ] as Feature[],
+
+  privacy: {
+    title: "Private by design.",
+    description:
+      "Most assistants send every word you type to someone else's servers and need a paid AI subscription. JOI's AI model runs right on your computer.",
+    points: [
+      {
+        title: "The AI runs on your machine",
+        body: "Your conversations are processed by a model installed on your own computer, not a cloud chatbot.",
+      },
+      {
+        title: "No AI subscription or API key",
+        body: "Everything JOI needs to think comes with it. Nothing to sign up for, nothing to paste.",
+      },
+      {
+        title: "Your accounts stay yours",
+        body: "Every person connects their own Google and Slack accounts. JOI never shares access between people.",
+      },
     ],
-    primaryCta: { label: "Download for Windows", href: DOWNLOAD_URL },
-    secondaryCta: { label: "Book Demo", href: "#final-cta" },
-    statTiles: [
-      { label: "Median tool-run latency", value: "340ms" },
-      { label: "Policy checks per action", value: "12+" },
-      { label: "Background jobs/day", value: "250K" },
+    footnote:
+      "Services you connect (like Gmail or Slack) and web search talk to their own providers, as they always do.",
+  },
+
+  safety: {
+    title: "It asks before it acts.",
+    description:
+      "Letting software act for you takes trust. JOI is built so that nothing important happens without your say-so.",
+    points: [
+      "See exactly what JOI wants to do, then approve or deny it",
+      "Choose per tool: always allow, ask first, or never",
+      "Never sends to an address you didn't give it",
+      "Answers come from your real data, not made-up details",
+      "Every action is written to your activity log",
     ],
   },
-  trustStrip: [
-    "Security-Reviewed by Design Partners",
-    "SOC 2 Program In Progress",
-    "Built for Operator Workflows",
-    "Trusted by Founders and Technical Teams",
-    "Desktop-Native Control Layer",
-  ],
-  capabilities: [
+
+  steps: [
     {
-      tag: "Access",
-      title: "Secure Identity and Desktop OAuth",
-      description:
-        "Email/password and Google desktop OAuth with session hardening and token lifecycle controls.",
+      title: "Install JOI",
+      description: "Download the installer and sign in with email or Google. Setup takes a few minutes.",
     },
     {
-      tag: "Execution",
-      title: "Streaming AI + Multi-Step Tool Workflows",
-      description:
-        "Move from chat to action with chained operations, retries, and observable step execution.",
+      title: "Connect what you use",
+      description: "Optionally link your Google account and Slack. Each takes one click and you can disconnect any time.",
     },
     {
-      tag: "Voice",
-      title: "Speech In and Natural Voice Out",
-      description:
-        "Transcribe intent fast, respond with low-latency TTS, and keep the operator in flow.",
-    },
-    {
-      tag: "Memory",
-      title: "Persistent Preferences and Notes",
-      description:
-        "Remember communication style, team context, and decisions to reduce repetitive setup.",
-    },
-    {
-      tag: "Governance",
-      title: "Per-Tool Policies and Approvals",
-      description:
-        "Set allow, deny, or require approval at tool level with policy checks before execution.",
-    },
-    {
-      tag: "Knowledge",
-      title: "Local Indexing + Retrieval",
-      description:
-        "Ingest local files, resolve facts with RAG, and answer with grounded workspace knowledge.",
-    },
-    {
-      tag: "Automation",
-      title: "Routines, Reminders, Background Jobs",
-      description:
-        "Schedule recurring workflows, trigger reminders, and run unattended jobs with guardrails.",
-    },
-    {
-      tag: "Observability",
-      title: "Notifications and Audit Logs",
-      description:
-        "Track outcomes in real time and review complete action histories for accountability.",
-    },
-    {
-      tag: "Context",
-      title: "Desktop Awareness + Hotkeys",
-      description:
-        "Understand active windows and invoke JOI from keyboard-first shortcuts for fast control.",
-    },
-  ] as Capability[],
-  howItWorks: [
-    {
-      title: "1. Set policy boundaries",
-      description:
-        "Define which tools can run automatically, which need approval, and which are blocked.",
-    },
-    {
-      title: "2. Trigger JOI from chat, voice, or hotkey",
-      description:
-        "JOI parses intent, collects context, and builds an execution plan across connected tools.",
-    },
-    {
-      title: "3. Approve and monitor outcomes",
-      description:
-        "Review planned actions, approve when required, and inspect every result in audit logs.",
+      title: "Press Ctrl + Alt + J",
+      description: "JOI appears instantly, even from the tray. Type or talk, and watch it work.",
     },
   ] as Step[],
-  securityBullets: [
-    "Tool-level policy matrix: allow / deny / require approval",
-    "Signed action traces with user/session metadata",
-    "Notification pipeline for sensitive and failed operations",
-    "Role-ready controls for founders, operators, and teams",
-  ],
-  voiceDesktopBullets: [
-    "Wake and trigger via keyboard shortcuts or command palette",
-    "Live transcription optimized for fast operator requests",
-    "Desktop context capture to reduce ambiguity before tool runs",
-    "TTS responses for eyes-off execution loops",
-  ],
-  automationBullets: [
-    "Recurring routines for reporting, prep, and follow-up",
-    "Reminder workflows linked to tasks, calendar, and email",
-    "Background jobs with retries and observable status",
-    "Escalation hooks for exceptions and policy conflicts",
-  ],
-  integrationTools: [
-    "App Control",
-    "Web Search",
-    "System Info",
-    "Files",
-    "Email",
-    "Calendar / Tasks",
-    "WhatsApp",
-  ],
-  testimonials: [
+
+  plans: [
     {
-      quote:
-        "JOI moved us from assistant prompts to actual execution. Our operations lead now automates handoffs without waiting on engineering.",
-      name: "Anita Roy",
-      role: "Chief of Staff",
-      company: "Deltaforge",
-    },
-    {
-      quote:
-        "Approval gates are the difference maker. We can let JOI run fast while keeping finance and customer workflows under explicit control.",
-      name: "Marcus Lee",
-      role: "Founder",
-      company: "Northline Systems",
-    },
-    {
-      quote:
-        "The local retrieval and audit trail solved trust. Answers are grounded in our docs and every action has a clean trail to review.",
-      name: "Priya Nair",
-      role: "Head of Platform",
-      company: "Sable Metrics",
-    },
-  ] as Testimonial[],
-  pricing: [
-    {
-      name: "Starter",
-      price: "₹2,499/mo",
-      summary: "For solo operators validating desktop AI workflows.",
+      name: "Early access",
+      price: "Free",
+      note: "Everything JOI can do today.",
       features: [
-        "1 workspace",
-        "Core tools and voice",
-        "Local knowledge indexing",
-        "Standard audit history",
+        "Local AI model, no subscription",
+        "Email, calendar, files and computer control",
+        "Google Workspace and Slack",
+        "Voice, routines and morning briefing",
+        "Approvals and activity log",
       ],
       cta: "Download for Windows",
       ctaHref: DOWNLOAD_URL,
-    },
-    {
-      name: "Pro",
-      price: "₹6,499/mo",
-      summary: "For power users running daily governed automation.",
-      features: [
-        "5 workspaces",
-        "Advanced policy controls",
-        "Priority background jobs",
-        "Extended audit retention",
-      ],
-      cta: "Book Demo",
-      ctaHref: "#final-cta",
       featured: true,
     },
     {
-      name: "Team",
-      price: "Custom",
-      summary: "For technical teams deploying JOI across roles.",
+      name: "JOI Pro",
+      price: "Coming soon",
+      note: "For people who want even more.",
       features: [
-        "Role-based governance",
-        "Shared memory and templates",
-        "Security and onboarding support",
-        "Dedicated solution engineer",
+        "A larger, smarter model when you need it",
+        "Reach JOI from your phone",
+        "Priority support",
       ],
-      cta: "Talk to Sales",
-      ctaHref: "#final-cta",
+      cta: "Coming soon",
+      ctaHref: "#",
+      disabled: true,
     },
-  ] as PricingTier[],
+  ] as Plan[],
+
   faqs: [
     {
-      question: "How is JOI different from a web chatbot?",
-      answer:
-        "JOI is desktop-native and action-oriented. It executes real tools, enforces approvals, and tracks every step instead of only returning text.",
+      question: "Is JOI free?",
+      answer: "Yes. JOI is free during early access, with every current feature included.",
     },
     {
-      question: "Can we require approval for specific tools?",
+      question: "What do I need to run it?",
       answer:
-        "Yes. Tool governance is configurable per integration with allow, deny, and require-approval modes.",
+        "A Windows 10 or 11 PC (64-bit) with at least 8 GB of RAM; 16 GB is better. Plan for about 6 GB of free disk space for JOI and its AI model. A graphics card makes replies faster but isn't required.",
     },
     {
-      question: "Does JOI work with local files and private knowledge?",
+      question: "Does my data leave my computer?",
       answer:
-        "Yes. JOI can index local documents for retrieval workflows and keep responses grounded in your workspace context.",
+        "Your chats are processed by the AI model on your own computer. When you connect services like Gmail or Slack, or ask JOI to search the web, those requests go to those services, as they normally would.",
     },
     {
-      question: "How are voice interactions handled?",
+      question: "Can JOI do things without asking me?",
       answer:
-        "JOI supports low-latency voice transcription for input and TTS for responses, so operators can run flows without constant typing.",
+        "Only what you allow. Sending email, changing your calendar, typing on your computer and other sensitive actions wait for your approval by default, and you can change that per tool.",
     },
     {
-      question: "What can we audit after actions run?",
+      question: "Which accounts can I connect?",
       answer:
-        "Each execution includes timestamps, actor/session metadata, tool calls, approvals, and outcomes for compliance-ready review.",
+        "Google (Gmail, Calendar, Tasks, Drive, Docs, Sheets, Contacts and Meet) and Slack. Each person connects their own accounts.",
     },
     {
-      question: "Is JOI available for teams today?",
-      answer:
-        "Yes. JOI is available now. Download the desktop app or book a demo for team rollout planning.",
+      question: "Is there a Mac or phone version?",
+      answer: "Not yet. JOI is Windows-first today.",
     },
   ] as FAQ[],
+
   finalCta: {
-    title: "Deploy JOI on your desktop today.",
-    description:
-      "Download JOI now for Windows x64, or book a live demo to map JOI to your workflow stack.",
-    primaryCta: { label: "Download for Windows", href: DOWNLOAD_URL },
-    secondaryCta: { label: "Book Demo", href: "#" },
+    title: "Meet the assistant that gets things done.",
+    description: "Free during early access. Installs in minutes.",
   },
+
   footerLinks: [
-    { label: "Privacy", href: "#" },
-    { label: "Security", href: "#security-governance" },
-    { label: "About Developer", href: "#about-developer" },
-    { label: "Contact", href: "#final-cta" },
-  ],
+    { label: "Features", href: "#features" },
+    { label: "Privacy", href: "#privacy" },
+    { label: "FAQ", href: "#faq" },
+    { label: "About", href: "#about-developer" },
+  ] as NavLink[],
 };

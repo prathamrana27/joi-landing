@@ -1,72 +1,100 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { siteContent } from "../content/siteContent";
+import ChatDemo from "../components/ChatDemo";
+import DownloadButton from "../components/DownloadButton";
+import RevealText from "../components/RevealText";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 function HeroSection() {
-  const shouldReduceMotion = useReducedMotion();
-  const isExternalLink = (href: string) => /^https?:\/\//.test(href);
+  const reduce = useReducedMotion();
+  const { hero } = siteContent;
+  const [phrase, setPhrase] = useState(0);
+
+  useEffect(() => {
+    if (reduce) return;
+    const id = window.setInterval(() => setPhrase((p) => (p + 1) % hero.rotating.length), 2400);
+    return () => window.clearInterval(id);
+  }, [reduce, hero.rotating.length]);
+
+  const fade = (delay: number) =>
+    reduce
+      ? {}
+      : {
+          initial: { opacity: 0, y: 18 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.7, delay, ease },
+        };
 
   return (
     <section id="hero" className="hero">
-      <div className="container hero-grid hero-copy-only">
+      <div className="container hero-grid">
+        <div className="hero-copy">
+          <motion.p className="eyebrow hero-eyebrow" {...fade(0)}>
+            <span className="pulse-dot" /> {hero.eyebrow}
+          </motion.p>
+
+          <RevealText
+            as="h1"
+            text={hero.headlineStart}
+            accent={hero.headlineAccent}
+            after={hero.headlineEnd}
+            className="hero-title"
+          />
+
+          <motion.div className="hero-rotator" aria-live="polite" {...fade(0.35)}>
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={phrase}
+                initial={reduce ? false : { opacity: 0, y: 14, filter: "blur(6px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -14, filter: "blur(6px)" }}
+                transition={{ duration: 0.45, ease }}
+              >
+                {hero.rotating[phrase]}
+              </motion.span>
+            </AnimatePresence>
+          </motion.div>
+
+          <motion.p className="hero-sub" {...fade(0.45)}>
+            {hero.subheadline}
+          </motion.p>
+
+          <motion.div className="hero-cta" {...fade(0.55)}>
+            <DownloadButton size="lg" />
+            <a className="btn btn-ghost btn-lg" href={hero.secondaryCta.href}>
+              {hero.secondaryCta.label}
+            </a>
+          </motion.div>
+
+          <motion.p className="hero-meta" {...fade(0.65)}>
+            {siteContent.downloadMeta}
+          </motion.p>
+        </div>
+
         <motion.div
-          className="hero-copy"
-          initial={shouldReduceMotion ? false : { opacity: 0, y: 26 }}
-          animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="hero-visual"
+          initial={reduce ? false : { opacity: 0, y: 40, rotate: 1.5 }}
+          animate={{ opacity: 1, y: 0, rotate: 0 }}
+          transition={{ duration: 1, delay: 0.3, ease }}
         >
-          <div className="hero-mainline">
-            <div className="hero-brand-chip">
-              <img src="/joi-logo-icon.png" alt="" aria-hidden="true" className="hero-chip-logo" />
-              <p className="hero-badge">{siteContent.hero.badge}</p>
-            </div>
-            <h1>{siteContent.hero.headline}</h1>
-            <p className="hero-subheadline">{siteContent.hero.subheadline}</p>
-            <p className="hero-positioning">{siteContent.hero.positioning}</p>
-          </div>
-
-          <div className="hero-detail-grid">
-            <ul className="hero-highlights" aria-label="JOI differentiators">
-              {siteContent.hero.highlights.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-
-            <div className="hero-cta">
-              <a
-                className="btn btn-primary"
-                href={siteContent.hero.primaryCta.href}
-                target={isExternalLink(siteContent.hero.primaryCta.href) ? "_blank" : undefined}
-                rel={
-                  isExternalLink(siteContent.hero.primaryCta.href)
-                    ? "noopener noreferrer"
-                    : undefined
-                }
-              >
-                {siteContent.hero.primaryCta.label}
-              </a>
-              <a
-                className="btn btn-outline"
-                href={siteContent.hero.secondaryCta.href}
-                target={isExternalLink(siteContent.hero.secondaryCta.href) ? "_blank" : undefined}
-                rel={
-                  isExternalLink(siteContent.hero.secondaryCta.href)
-                    ? "noopener noreferrer"
-                    : undefined
-                }
-              >
-                {siteContent.hero.secondaryCta.label}
-              </a>
-            </div>
-
-            <div className="hero-stats" role="list" aria-label="Key product metrics">
-              {siteContent.hero.statTiles.map((tile) => (
-                <div className="stat-card" key={tile.label} role="listitem">
-                  <p>{tile.value}</p>
-                  <span>{tile.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <div className="hero-visual-glow" aria-hidden="true" />
+          <ChatDemo />
+          <motion.div
+            className="float-chip chip-a"
+            animate={reduce ? undefined : { y: [0, -10, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <span className="kbd-mini">Ctrl</span>+<span className="kbd-mini">Alt</span>+<span className="kbd-mini">J</span>
+          </motion.div>
+          <motion.div
+            className="float-chip chip-b"
+            animate={reduce ? undefined : { y: [0, 10, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+          >
+            <span className="dot-sage" /> Running on this PC
+          </motion.div>
         </motion.div>
       </div>
     </section>
