@@ -45,8 +45,9 @@ export type Plan = {
 
 // The installer link can be changed at build time without touching code:
 //   VITE_DOWNLOAD_URL=https://…/JOI-Setup-1.1.0.exe npm run build
+// Where the release process puts installers (see joi-frontend/package.json "publish").
 const DEFAULT_DOWNLOAD_URL =
-  "https://joi-exe-bucket.s3.ap-south-1.amazonaws.com/JOI-Desktop-1.0.0-x64.exe.exe";
+  "https://joi-exe-bucket.s3.ap-south-1.amazonaws.com/releases/JOI-Setup-1.1.0.exe";
 
 const DOWNLOAD_URL: string = import.meta.env.VITE_DOWNLOAD_URL || DEFAULT_DOWNLOAD_URL;
 
