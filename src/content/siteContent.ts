@@ -49,6 +49,7 @@ export const siteContent = {
     { label: "Integrations", href: "#integrations-tools" },
     { label: "Pricing", href: "#pricing" },
     { label: "FAQ", href: "#faq" },
+    { label: "About Developer", href: "#about-developer" },
   ] as NavLink[],
   hero: {
     badge: "Desktop AI Operator for Builders",
@@ -204,7 +205,7 @@ export const siteContent = {
   pricing: [
     {
       name: "Starter",
-      price: "$29/mo",
+      price: "₹2,499/mo",
       summary: "For solo operators validating desktop AI workflows.",
       features: [
         "1 workspace",
@@ -217,7 +218,7 @@ export const siteContent = {
     },
     {
       name: "Pro",
-      price: "$79/mo",
+      price: "₹6,499/mo",
       summary: "For power users running daily governed automation.",
       features: [
         "5 workspaces",
@@ -285,6 +286,7 @@ export const siteContent = {
   footerLinks: [
     { label: "Privacy", href: "#" },
     { label: "Security", href: "#security-governance" },
+    { label: "About Developer", href: "#about-developer" },
     { label: "Contact", href: "#final-cta" },
   ],
 };

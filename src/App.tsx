@@ -13,6 +13,7 @@ import TestimonialsSection from "./sections/TestimonialsSection";
 import PricingSection from "./sections/PricingSection";
 import FAQSection from "./sections/FAQSection";
 import FinalCTASection from "./sections/FinalCTASection";
+import AboutDeveloperSection from "./sections/AboutDeveloperSection";
 
 const GlobalBackground3D = lazy(() => import("./three/GlobalBackground3D"));
 
@@ -37,6 +38,7 @@ function App() {
           <PricingSection />
           <FAQSection />
           <FinalCTASection />
+          <AboutDeveloperSection />
         </main>
         <Footer />
       </div>

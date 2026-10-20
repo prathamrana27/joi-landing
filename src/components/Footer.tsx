@@ -14,7 +14,12 @@ function Footer() {
         </div>
         <nav aria-label="Footer links" className="footer-links">
           {siteContent.footerLinks.map((link) => (
-            <a key={link.label} href={link.href}>
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.href.startsWith("http") ? "_blank" : undefined}
+              rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            >
               {link.label}
             </a>
           ))}
