@@ -1,3 +1,5 @@
+import { latestRelease } from "./releases";
+
 export type NavLink = {
   label: string;
   href: string;
@@ -20,7 +22,8 @@ export type FeatureIcon =
   | "plug"
   | "brain"
   | "book"
-  | "sun";
+  | "sun"
+  | "phone";
 
 export type Step = {
   title: string;
@@ -54,13 +57,14 @@ const DOWNLOAD_URL: string = import.meta.env.VITE_DOWNLOAD_URL || DEFAULT_DOWNLO
 export const siteContent = {
   brand: "JOI",
   downloadUrl: DOWNLOAD_URL,
-  downloadMeta: "Windows 10 & 11 · 64-bit · Free during early access",
+  downloadMeta: `Version ${latestRelease.version} · Windows 10 & 11 · 64-bit · Free during early access`,
 
   navLinks: [
     { label: "Features", href: "#features" },
     { label: "Privacy", href: "#privacy" },
     { label: "Safety", href: "#safety" },
     { label: "How it works", href: "#how-it-works" },
+    { label: "What's new", href: "#whats-new" },
     { label: "FAQ", href: "#faq" },
   ] as NavLink[],
 
@@ -86,6 +90,8 @@ export const siteContent = {
     "Every morning, brief me at 8",
     "Take a screenshot",
     "Add milk to my tasks",
+    "From my phone: any new emails?",
+    "Lock my PC (I'll approve it)",
   ],
 
   features: [
@@ -122,6 +128,13 @@ export const siteContent = {
       icon: "mic",
       title: "Just talk",
       description: "Speak your request and hear the answer back. Hands-free when you need it.",
+    },
+    {
+      icon: "phone",
+      title: "JOI in your pocket",
+      description:
+        "Message JOI from your phone through your own Telegram bot. Ask about your inbox, your day or your PC from anywhere; anything sensitive waits for your OK on the computer.",
+      size: "wide",
     },
     {
       icon: "plug",
@@ -178,6 +191,7 @@ export const siteContent = {
       "Choose per tool: always allow, ask first, or never",
       "Never sends to an address you didn't give it",
       "Answers come from your real data, not made-up details",
+      "Requests from your phone always wait for your OK on the PC",
       "Every action is written to your activity log",
     ],
   },
@@ -185,7 +199,7 @@ export const siteContent = {
   steps: [
     {
       title: "Install JOI",
-      description: "Download the installer and sign in with email or Google. Setup takes a few minutes.",
+      description: "Download the installer and sign in. On first launch JOI sets up its own AI engine; you just watch the progress bar.",
     },
     {
       title: "Connect what you use",
@@ -207,7 +221,8 @@ export const siteContent = {
         "Email, calendar, files and computer control",
         "Google Workspace and Slack",
         "Voice, routines and morning briefing",
-        "Approvals and activity log",
+        "Phone control through Telegram",
+        "Approvals, activity log and automatic updates",
       ],
       cta: "Download for Windows",
       ctaHref: DOWNLOAD_URL,
@@ -219,7 +234,7 @@ export const siteContent = {
       note: "For people who want even more.",
       features: [
         "A larger, smarter model when you need it",
-        "Reach JOI from your phone",
+        "Reach JOI on WhatsApp",
         "Priority support",
       ],
       cta: "Coming soon",
@@ -254,7 +269,17 @@ export const siteContent = {
         "Google (Gmail, Calendar, Tasks, Drive, Docs, Sheets, Contacts and Meet) and Slack. Each person connects their own accounts.",
     },
     {
-      question: "Is there a Mac or phone version?",
+      question: "Can I use JOI from my phone?",
+      answer:
+        "Yes. Connect your own Telegram bot in Settings → Connectors and pair it with a code. JOI then answers your messages from anywhere while your PC is on, and anything sensitive waits for your approval on the computer.",
+    },
+    {
+      question: "How do updates work?",
+      answer:
+        "Automatically. JOI downloads new versions in the background and installs them the next time you quit it. See the release notes for what changed in each version.",
+    },
+    {
+      question: "Is there a Mac version?",
       answer: "Not yet. JOI is Windows-first today.",
     },
   ] as FAQ[],
@@ -268,6 +293,7 @@ export const siteContent = {
     { label: "Features", href: "#features" },
     { label: "Privacy", href: "#privacy" },
     { label: "FAQ", href: "#faq" },
+    { label: "Release notes", href: "/changelog" },
     { label: "About", href: "#about-developer" },
   ] as NavLink[],
 };

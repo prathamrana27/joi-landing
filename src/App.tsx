@@ -10,6 +10,7 @@ import HowItWorksSection from "./sections/HowItWorksSection";
 import ShortcutSection from "./sections/ShortcutSection";
 import PricingSection from "./sections/PricingSection";
 import FAQSection from "./sections/FAQSection";
+import WhatsNewSection from "./sections/WhatsNewSection";
 import FinalCTASection from "./sections/FinalCTASection";
 import AboutDeveloperSection from "./sections/AboutDeveloperSection";
 
@@ -28,6 +29,7 @@ function App() {
         <ShortcutSection />
         <HowItWorksSection />
         <PricingSection />
+        <WhatsNewSection />
         <FAQSection />
         <FinalCTASection />
         <AboutDeveloperSection />
