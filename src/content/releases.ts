@@ -14,6 +14,24 @@ export type Release = {
 
 export const releases: Release[] = [
   {
+    version: "1.2.0",
+    date: "2026-10-22",
+    title: "JOI pops up right where you need it",
+    summary:
+      "Press the shortcut and JOI appears as a small assistant in the corner of your screen, ready to listen, without taking over your desktop.",
+    added: [
+      "Quick assistant: the JOI shortcut, Ctrl + Alt + J and the tray icon open a small popup in the bottom-right corner instead of the full window.",
+      "Meet JOI's mascot: an animated character that listens, thinks, talks and celebrates with you.",
+      "Talk to JOI: tap the mic and ask. Spoken questions get spoken answers.",
+      "Approve or deny actions right inside the popup.",
+      "Open the full app from the popup to continue the same conversation.",
+    ],
+    improved: [
+      "When you're signed in, launching JOI goes straight to the popup.",
+      "Tray icon: click for the popup, double-click for the full app.",
+    ],
+  },
+  {
     version: "1.1.0",
     date: "2026-10-21",
     title: "Your phone, a one-step setup, and a lot more trust",

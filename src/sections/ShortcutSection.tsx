@@ -14,7 +14,7 @@ function ShortcutSection() {
         </div>
         <RevealText text="JOI is always" accent="one shortcut away." />
         <p className="section-description center">
-          Even when it's tucked away in the tray. Press it from any app, ask, and get back to what you were doing.
+          Press it from any app and JOI pops up as a small assistant in the corner of your screen. Ask by voice or text, then get back to what you were doing.
         </p>
       </div>
     </section>

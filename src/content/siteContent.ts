@@ -23,7 +23,8 @@ export type FeatureIcon =
   | "brain"
   | "book"
   | "sun"
-  | "phone";
+  | "phone"
+  | "sparkle";
 
 export type Step = {
   title: string;
@@ -50,7 +51,7 @@ export type Plan = {
 //   VITE_DOWNLOAD_URL=https://…/JOI-Setup-1.1.0.exe npm run build
 // Where the release process puts installers (see joi-frontend/package.json "publish").
 const DEFAULT_DOWNLOAD_URL =
-  "https://joi-release.s3.ap-southeast-2.amazonaws.com/JOI-Setup-1.1.0.exe";
+  "https://joi-release.s3.ap-southeast-2.amazonaws.com/JOI-Setup-1.2.0.exe";
 
 const DOWNLOAD_URL: string = import.meta.env.VITE_DOWNLOAD_URL || DEFAULT_DOWNLOAD_URL;
 
@@ -130,6 +131,13 @@ export const siteContent = {
       icon: "mic",
       title: "Just talk",
       description: "Speak your request and hear the answer back. Hands-free when you need it.",
+    },
+    {
+      icon: "sparkle",
+      title: "Pops up, never gets in the way",
+      description:
+        "Press Ctrl + Alt + J and JOI appears as a small assistant in the corner of your screen, mascot and all. Ask by voice or text, then get back to work.",
+      size: "wide",
     },
     {
       icon: "phone",
