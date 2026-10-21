@@ -4,6 +4,7 @@ import { siteContent } from "../content/siteContent";
 import ChatDemo from "../components/ChatDemo";
 import DownloadButton from "../components/DownloadButton";
 import RevealText from "../components/RevealText";
+import Icon from "../components/Icon";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -31,9 +32,13 @@ function HeroSection() {
     <section id="hero" className="hero">
       <div className="container hero-grid">
         <div className="hero-copy">
-          <motion.p className="eyebrow hero-eyebrow" {...fade(0)}>
-            <span className="pulse-dot" /> {hero.eyebrow}
-          </motion.p>
+          <motion.a className="hero-announce" href={hero.announcement.href} {...fade(0)}>
+            <span className="announce-tag">
+              <span className="pulse-dot" /> {hero.announcement.tag}
+            </span>
+            <span className="announce-text">{hero.announcement.text}</span>
+            <Icon name="arrow" size={15} strokeWidth={2.2} />
+          </motion.a>
 
           <RevealText
             as="h1"

@@ -61,6 +61,7 @@ export const siteContent = {
 
   navLinks: [
     { label: "Features", href: "#features" },
+    { label: "Phone", href: "#phone" },
     { label: "Privacy", href: "#privacy" },
     { label: "Safety", href: "#safety" },
     { label: "How it works", href: "#how-it-works" },
@@ -70,10 +71,11 @@ export const siteContent = {
 
   hero: {
     eyebrow: "Your personal AI, on your desktop",
+    announcement: { tag: "New in 1.1", text: "Control JOI from your phone", href: "#phone" },
     headlineStart: "The assistant that",
     headlineAccent: "actually does",
     headlineEnd: "things.",
-    rotating: ["Reads your inbox.", "Plans your day.", "Finds your files.", "Runs your computer."],
+    rotating: ["Reads your inbox.", "Plans your day.", "Works from your phone.", "Finds your files.", "Runs your computer."],
     subheadline:
       "JOI lives on your computer. Ask in plain words, typed or spoken, and it handles your email, calendar, files and apps, and checks with you before anything important.",
     secondaryCta: { label: "See what it can do", href: "#features" },
@@ -159,6 +161,25 @@ export const siteContent = {
       description: "Weather, today's schedule and unread email, ready when you are.",
     },
   ] as Feature[],
+
+  phone: {
+    eyebrow: "JOI on your phone",
+    titleStart: "Your PC, a",
+    titleAccent: "text away.",
+    description:
+      "Message JOI from anywhere and it works on your computer at home: checks your inbox, reads your calendar, finds files, looks up anything. Through your own private Telegram bot, so nothing new to install on your phone.",
+    steps: [
+      { title: "Create your bot", body: "Message @BotFather in Telegram and send /newbot. It takes a minute." },
+      { title: "Paste the token into JOI", body: "Settings → Connectors → Phone. JOI shows a 6-digit code." },
+      { title: "Send the code from your phone", body: "That's it. Your phone is paired." },
+    ],
+    promises: [
+      "Only your paired phone is listened to; strangers get silence",
+      "Sending, deleting or changing anything waits for your OK on the PC",
+      "Messages sent while your PC was off are never acted on later",
+    ],
+    note: "Free · works while your PC is on",
+  },
 
   privacy: {
     title: "Private by design.",

@@ -11,6 +11,7 @@ import ShortcutSection from "./sections/ShortcutSection";
 import PricingSection from "./sections/PricingSection";
 import FAQSection from "./sections/FAQSection";
 import WhatsNewSection from "./sections/WhatsNewSection";
+import PhoneSection from "./sections/PhoneSection";
 import FinalCTASection from "./sections/FinalCTASection";
 import AboutDeveloperSection from "./sections/AboutDeveloperSection";
 
@@ -23,6 +24,7 @@ function App() {
       <main>
         <HeroSection />
         <MarqueeSection />
+        <PhoneSection />
         <FeaturesSection />
         <PrivacySection />
         <SafetySection />
