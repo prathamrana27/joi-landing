@@ -1,5 +1,5 @@
 // Release notes shown on the site ("What's new" + /changelog). Newest first.
-// Every app release adds an entry here and in Arti/CHANGELOG.md (see docs/RELEASING.md).
+// Every app release adds an entry here and in joi-frontend/CHANGELOG.md (see docs/RELEASING.md).
 
 export type Release = {
   version: string;
