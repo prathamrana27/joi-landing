@@ -14,6 +14,16 @@ export type Release = {
 
 export const releases: Release[] = [
   {
+    version: "1.2.1",
+    date: "2026-10-22",
+    title: "JOI's own icon everywhere",
+    summary: "A small fix so JOI looks like JOI on your desktop, taskbar and Start menu.",
+    fixed: [
+      "The desktop shortcut, taskbar and Start menu showed a generic icon instead of JOI's logo.",
+      "Task Manager and file properties said \"Electron\" instead of \"JOI\".",
+    ],
+  },
+  {
     version: "1.2.0",
     date: "2026-10-22",
     title: "JOI pops up right where you need it",

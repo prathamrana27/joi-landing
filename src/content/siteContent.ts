@@ -51,7 +51,7 @@ export type Plan = {
 //   VITE_DOWNLOAD_URL=https://…/JOI-Setup-1.1.0.exe npm run build
 // Where the release process puts installers (see joi-frontend/package.json "publish").
 const DEFAULT_DOWNLOAD_URL =
-  "https://joi-release.s3.ap-southeast-2.amazonaws.com/JOI-Setup-1.2.0.exe";
+  "https://joi-release.s3.ap-southeast-2.amazonaws.com/JOI-Setup-1.2.1.exe";
 
 const DOWNLOAD_URL: string = import.meta.env.VITE_DOWNLOAD_URL || DEFAULT_DOWNLOAD_URL;
 
