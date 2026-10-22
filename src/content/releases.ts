@@ -14,6 +14,15 @@ export type Release = {
 
 export const releases: Release[] = [
   {
+    version: "1.3.2",
+    date: "2026-10-22",
+    title: "Connect Slack from the installed app",
+    summary: "Slack now connects in one click for everyone who installs JOI.",
+    fixed: [
+      "Slack couldn't be connected in installed copies of JOI. Connecting now works for everyone, and Slack's private app key never leaves JOI's servers.",
+    ],
+  },
+  {
     version: "1.3.1",
     date: "2026-10-22",
     title: "Google sign-in and Google connections work in the installed app",
