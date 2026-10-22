@@ -14,6 +14,15 @@ export type Release = {
 
 export const releases: Release[] = [
   {
+    version: "1.3.3",
+    date: "2026-10-22",
+    title: "Slack connect, finished",
+    summary: "Connecting Slack now completes for everyone.",
+    fixed: [
+      "Connecting Slack now completes: Slack hands you back to JOI through a secure (https) address, which Slack requires.",
+    ],
+  },
+  {
     version: "1.3.2",
     date: "2026-10-22",
     title: "Connect Slack from the installed app",
