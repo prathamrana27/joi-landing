@@ -14,6 +14,16 @@ export type Release = {
 
 export const releases: Release[] = [
   {
+    version: "1.3.1",
+    date: "2026-10-22",
+    title: "Google sign-in and Google connections work in the installed app",
+    summary: "A quick fix so everyone who installs JOI can sign in with Google and connect Gmail, Calendar and Drive.",
+    fixed: [
+      "“Continue with Google” was missing from the sign-in page, and Google services couldn't be connected, in installed copies of JOI.",
+      "The sign-in page now waits for JOI to finish starting before deciding which options to show.",
+    ],
+  },
+  {
     version: "1.3.0",
     date: "2026-10-22",
     title: "Say “Hey JOI”, in English or Hindi, and take anything back",
