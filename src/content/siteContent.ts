@@ -24,7 +24,10 @@ export type FeatureIcon =
   | "book"
   | "sun"
   | "phone"
-  | "sparkle";
+  | "sparkle"
+  | "undo"
+  | "language"
+  | "shield";
 
 export type Step = {
   title: string;
@@ -51,7 +54,7 @@ export type Plan = {
 //   VITE_DOWNLOAD_URL=https://…/JOI-Setup-1.1.0.exe npm run build
 // Where the release process puts installers (see joi-frontend/package.json "publish").
 const DEFAULT_DOWNLOAD_URL =
-  "https://joi-release.s3.ap-southeast-2.amazonaws.com/JOI-Setup-1.2.1.exe";
+  "https://joi-release.s3.ap-southeast-2.amazonaws.com/JOI-Setup-1.3.0.exe";
 
 const DOWNLOAD_URL: string = import.meta.env.VITE_DOWNLOAD_URL || DEFAULT_DOWNLOAD_URL;
 
@@ -72,11 +75,11 @@ export const siteContent = {
 
   hero: {
     eyebrow: "Your personal AI, on your desktop",
-    announcement: { tag: "New in 1.1", text: "Control JOI from your phone", href: "#phone" },
+    announcement: { tag: "New in 1.3", text: "Just say “Hey JOI”, now in Hindi too", href: "#features" },
     headlineStart: "The assistant that",
     headlineAccent: "actually does",
     headlineEnd: "things.",
-    rotating: ["Reads your inbox.", "Plans your day.", "Works from your phone.", "Finds your files.", "Runs your computer."],
+    rotating: ["Reads your inbox.", "Plans your day.", "Works from your phone.", "Speaks Hindi too.", "Runs your computer."],
     subheadline:
       "JOI lives on your computer. Ask in plain words, typed or spoken, and it handles your email, calendar, files and apps, and checks with you before anything important.",
     secondaryCta: { label: "See what it can do", href: "#features" },
@@ -95,6 +98,10 @@ export const siteContent = {
     "Add milk to my tasks",
     "From my phone: any new emails?",
     "Lock my PC (I'll approve it)",
+    "Hey JOI, aaj mera schedule kya hai?",
+    "When Priya emails, tell me",
+    "Undo that email",
+    "Before each meeting, give me the notes",
   ],
 
   features: [
@@ -117,9 +124,9 @@ export const siteContent = {
     },
     {
       icon: "repeat",
-      title: "Routines that run themselves",
+      title: "Routines that react",
       description:
-        "“Every morning, summarise my unread email.” JOI runs it in the background and notifies you with the result.",
+        "Run on a schedule, or the moment something happens: an email from your boss, a meeting about to start, your battery running low. JOI handles it and tells you.",
       size: "tall",
     },
     {
@@ -129,8 +136,21 @@ export const siteContent = {
     },
     {
       icon: "mic",
-      title: "Just talk",
-      description: "Speak your request and hear the answer back. Hands-free when you need it.",
+      title: "Just say “Hey JOI”",
+      description:
+        "JOI pops up, listens and answers out loud. Speech is understood on your own computer, even offline, and the wake word is off until you turn it on.",
+      size: "wide",
+    },
+    {
+      icon: "language",
+      title: "English, Hindi or Hinglish",
+      description: "Ask the way you talk: “aaj mera schedule kya hai?” JOI answers in the same language.",
+    },
+    {
+      icon: "undo",
+      title: "Changed your mind? Undo",
+      description:
+        "Emails wait 30 seconds before they go. Deleted events and overwritten files can be brought back.",
     },
     {
       icon: "sparkle",
@@ -154,9 +174,14 @@ export const siteContent = {
       size: "wide",
     },
     {
+      icon: "shield",
+      title: "Asks before it acts",
+      description: "Anything sensitive waits for your OK, and every step lands in your activity log.",
+    },
+    {
       icon: "brain",
-      title: "Remembers what matters",
-      description: "Your preferences and notes, kept and editable any time.",
+      title: "Learns about you",
+      description: "Mention your sister's name once and JOI asks “Remember this?”. Nothing is saved unless you say yes.",
     },
     {
       icon: "book",
@@ -219,6 +244,7 @@ export const siteContent = {
       "See exactly what JOI wants to do, then approve or deny it",
       "Choose per tool: always allow, ask first, or never",
       "Never sends to an address you didn't give it",
+      "Changed your mind? Undo emails, deleted events and overwritten files",
       "Answers come from your real data, not made-up details",
       "Requests from your phone always wait for your OK on the PC",
       "Every action is written to your activity log",
@@ -249,7 +275,9 @@ export const siteContent = {
         "Local AI model, no subscription",
         "Email, calendar, files and computer control",
         "Google Workspace and Slack",
-        "Voice, routines and morning briefing",
+        "“Hey JOI”, offline voice, Hindi and Hinglish",
+        "Event-triggered routines and morning briefing",
+        "Undo for emails, events and files",
         "Phone control through Telegram",
         "Approvals, activity log and automatic updates",
       ],
@@ -301,6 +329,16 @@ export const siteContent = {
       question: "Can I use JOI from my phone?",
       answer:
         "Yes. Connect your own Telegram bot in Settings → Connectors and pair it with a code. JOI then answers your messages from anywhere while your PC is on, and anything sensitive waits for your approval on the computer.",
+    },
+    {
+      question: "Does JOI listen all the time?",
+      answer:
+        "Only if you turn on “Hey JOI” in Settings → Voice. Even then, the wake word is recognised on your computer: nothing is recorded or sent anywhere until you say “Hey JOI”, and it stops when you quit JOI.",
+    },
+    {
+      question: "Does JOI understand Hindi?",
+      answer:
+        "Yes. Type or speak in Hindi, English or Hinglish and JOI replies in the same language. Answers in English are the most polished today.",
     },
     {
       question: "How do updates work?",

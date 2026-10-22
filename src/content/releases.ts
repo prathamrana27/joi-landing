@@ -14,6 +14,24 @@ export type Release = {
 
 export const releases: Release[] = [
   {
+    version: "1.3.0",
+    date: "2026-10-22",
+    title: "Say “Hey JOI”, in English or Hindi, and take anything back",
+    summary:
+      "JOI now wakes up when you call it, understands Hindi and Hinglish, learns about you (with your OK), reacts to events and lets you undo what it did.",
+    added: [
+      "“Hey JOI”: say it and the assistant pops up, listens and answers out loud. Off until you turn it on in Settings → Voice; the wake word is recognised on your computer.",
+      "Voice works offline: speech is transcribed on your computer, with no account or internet needed after a one-time download.",
+      "Hindi and Hinglish: ask in Hindi or mix it with English (“aaj mera schedule kya hai”) and JOI answers the same way.",
+      "JOI learns about you: when you mention something worth remembering, JOI asks “Remember this?” and only saves it if you say yes.",
+      "Routines that react: run one when an email arrives from someone, before each meeting, or when your battery gets low.",
+      "Undo: emails wait 30 seconds so you can cancel them, deleted calendar events can be restored for 5 minutes, and overwritten files can be put back for 10 minutes.",
+    ],
+    improved: [
+      "Spoken answers fall back to your computer's own voices when no voice service is set up, and pick a Hindi voice for Hindi text.",
+    ],
+  },
+  {
     version: "1.2.1",
     date: "2026-10-22",
     title: "JOI's own icon everywhere",

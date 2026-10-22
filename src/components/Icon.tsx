@@ -26,6 +26,8 @@ const PATHS: Record<IconName, string[]> = {
   arrow: ["M5 12h14", "m13 6 6 6-6 6"],
   download: ["M12 4v11", "m7 10 5 5 5-5", "M5 20h14"],
   sparkle: ["M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"],
+  undo: ["M9 14 4 9l5-5", "M4 9h10.5a5.5 5.5 0 0 1 0 11H11"],
+  language: ["M4 5h9", "M8.5 3v2", "M11 5c-1 4-3.5 7-6.5 8.5", "M6.5 8.5c1 2 2.8 3.6 4.5 4.5", "m13 21 4-9 4 9", "M14.5 18h5"],
 };
 
 type IconProps = {
